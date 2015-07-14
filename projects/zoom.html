@@ -1,0 +1,211 @@
+<html lang="en"><head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zoom game that Patrice Vignola worked on">
+    <meta name="author" content="Patrice Vignola">
+
+    <title>Patrice Vignola - Zoom</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+
+	<link href="../css/github.css" rel="stylesheet">
+	
+	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<style type="text/css"></style></head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">Patrice Vignola</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+					<li>
+                        <a href="../index.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="../contact.html">Contact</a>
+                    </li>
+					<!-- TODO: Uncomment when I actually have something interesting here (game jams postmortems maybe?)
+                    <li>
+                        <a href="blog.html">Blog</a>
+                    </li>
+					-->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container main-content">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Zoom</h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+		<!-- Welcome -->
+        <div class="row">
+            <div class="col-lg-9">
+                <img class="img-responsive" src="../img/zoom-banner.jpg" alt="">
+            </div>
+			<div class="col-lg-3">
+				<div class="button-container">
+					<a href="../builds/windows/zoom_windows.zip" class="button windows-button">
+						<div>
+							<p><small>Download for</small></p>
+							<p>Windows</p>
+						</div>
+					</a>
+				</div>
+				
+				<div class="button-container">
+					<a href="../builds/mac/zoom_mac.zip" class="button ios-button">
+						<div>
+							<p><small>Download for</small></p>
+							<p>Mac</p>
+						</div>
+					</a>
+				</div>
+				
+				<div class="button-container">
+					<a href="../builds/linux/zoom_linux.zip" class="button linux-button">
+						<div>
+							<p><small>Download for</small></p>
+							<p>Linux</p>
+						</div>
+					</a>
+				</div>
+			</div>
+        </div>
+        <!-- /.row -->
+		
+		<div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">The Game</h2>
+            </div>
+        </div>
+		
+        <!-- Project One -->
+        <div class="row">
+            <div class="col-lg-6">
+				<div class="video-container">
+					<iframe width="1000" height="561.8" src="https://www.youtube.com/embed/8oBOi0-DT_I" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+			
+			<div class="col-lg-6" style="font-size: 20;">
+				<p>
+					Zoom is a game made in less than 44 hours during the first edition of the Game Jam Battle hosted by the SAT (Société des Arts Technologiques) during Montreal's 2015 Digital Spring. The teams were constituted of 4 students or recent graduates and a mentor.
+				</p>
+				
+				<p>
+					Zoom is a typical platformer with a special twist: since the theme was "Two steps forward, one step back", you need to advance carefully when the camera is zoomed in, but take a step back to get a broader view when you don't know what is coming.
+				</p>
+				
+				<p>
+					To get a good score, you need to finish the level as quickly as possible and get as many coins as possible under 30 seconds. There are 14 levels so far.
+				</p>
+			</div>
+        </div>
+        <!-- /.row -->
+		
+		<div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">What I Worked On</h2>
+            </div>
+        </div>
+		
+        <div class="row">
+            <div class="col-md-12" style="font-size: 20;">
+                <p>
+					Since I was the only official programmer on a team of 4 designers, I did most of the general game programming (game flow, camera movement, menus, highscores, sounds integration) while the designers were programming the obstacles and elements related to their level designs.
+				</p>
+				
+				<br />
+				
+				<p>
+					<strong>Tools used:</strong>
+					
+					<ul>
+						<li>Unity</li>
+						<li>Visual Studio</li>
+						<li>C#</li>
+					</ul>
+				</p>
+				
+				<br />
+				
+				<p>
+					<strong>Some of the features I implemented:</strong>
+					
+					<ul>
+						<li>All the Game Flow</li>
+						<li>The Camera Mechanics (zoom-in/out and smooth follow)</li>
+						<li>Music/Sounds Integration</li>
+						<li>The Menus</li>
+						<li>The HUD</li>
+						<li>The Highscores</li>
+					</ul>
+				<p>
+            </div>
+        </div>
+		
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright © Patrice Vignola 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+
+</body></html>

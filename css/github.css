@@ -1,0 +1,46 @@
+.button-container {
+	width: 205px;
+}
+
+a.button div {
+  padding-top: 19px;
+  padding-left: 68px;
+  font-size: 20px;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  height: 80px;
+  margin-top: 15px;
+}
+
+a.button {
+	text-decoration: none;
+}
+
+a.button div:hover {
+	opacity: 0.8;
+}
+
+.github-button div {
+	background: transparent url(../img/github-button.png) 0 0 no-repeat;
+}
+
+.android-button div {
+	background: transparent url(../img/android-button.png) 0 0 no-repeat;
+}
+
+.ios-button div {
+	background: transparent url(../img/ios-button.png) 0 0 no-repeat;
+}
+
+.windows-button div {
+	background: transparent url(../img/windows-button.png) 0 0 no-repeat;
+}
+
+.linux-button div {
+	background: transparent url(../img/linux-button.png) 0 0 no-repeat;
+}
+
+.amazon-button div {
+	background: transparent url(../img/amazon-button.png) 0 0 no-repeat;
+}
