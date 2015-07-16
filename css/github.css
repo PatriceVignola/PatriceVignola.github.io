@@ -44,3 +44,7 @@ a.button div:hover {
 .amazon-button div {
 	background: transparent url(../img/amazon-button.png) 0 0 no-repeat;
 }
+
+.linkedin-button div {
+	background: transparent url(../img/linkedin-button.png) 0 0 no-repeat;
+}
