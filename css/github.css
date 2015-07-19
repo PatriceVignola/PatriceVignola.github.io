@@ -48,3 +48,7 @@ a.button div:hover {
 .linkedin-button div {
 	background: transparent url(../img/linkedin-button.png) 0 0 no-repeat;
 }
+
+.email-button div {
+	background: transparent url(../img/email-button.png) 0 0 no-repeat;
+}
