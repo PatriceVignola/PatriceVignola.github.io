@@ -109,13 +109,14 @@
 					<p>
 						This guide will therefore cover the following topics:
 						<ul>
-							<li>Setupping Jenkins</li>
-							<li>Linking Jenkins with Perforce (optional)</li>
-							<li>Automatically build your game using Unreal's automation tools</li>
+							<li>Setup Jenkins</li>
+							<li>Create a new Jenkins project</li>
+							<li>Link Jenkins with Perforce</li>
+							<li>Automatically Build Your Game</li>
 						</ul>
 					</p>
 					
-                    <h2 class="section-heading">Setupping Jenkins</h2>
+                    <h2 class="section-heading">Setup Jenkins</h2>
 
                     <p>
 						Setupping Jenkins is really easy: all you need is a server you can install the service on. Even though Jenkins runs really well on Linux, in our case we absolutely need a Windows server since it's not possible to build an Unreal Engine game for Windows using anything else.
@@ -135,19 +136,77 @@
 					</p>
 					
 					<p>
-						Now, if you try to access your server directly from its IP address, you might see a "This site can't be reached" error. This is probably due to the 8080 port not being forwarded correctly. To fix this, you can google "How to forward a port" and the steps should be pretty straightforward, depending on your configuration.
+						Now, if you try to access your server directly from its IP address, you might see a "This site can't be reached" error. This is probably due to the 8080 port not being forwarded correctly. You can google "How to forward a port" and the steps should be pretty straightforward, depending on your configuration.
 					</p>
 					
-                    <h2 class="section-heading">Linking Jenkins with perforce</h2>
+					<h2 class="section-heading">Create a new Jenkins project</h2>
 
                     <p>
-						Coming soon...
+						First of all, locate the "New Item" option available in the left sidebar menu of the home page of Jenkins. After clicking on it, select "Freestyle project" and enter the name of your project in the "Item name" field:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-3.png" alt="The service is running"></img>
+					</p>
+					
+					<p>
+						This is now the occasion to tell Jenkins which Source Code Management we wish to use and configure it accordingly:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-4.png" alt="Select your Source Code Management"></img>
+					</p>
+					
+					<p>
+						You might have noticed that Perforce is not there yet. If you want to link Jenkins to Perforce, follow me to the next section. Otherwise, you can configure your own Source Code Management settings and then skip to the last part of this guide, "Automatically Build Your Game". 
+					</p>
+					
+                    <h2 class="section-heading">Link Jenkins with perforce</h2>
+
+                    <p>
+						This part is optional and dependant on your source control system. If you are using Subversion or CVS, you can simply ignore this part.
+					</p>
+					
+					<p>
+						There are 2 plugins that we can use in order to link Jenkins with Perforce. The first (older) one is called <a href="https://wiki.jenkins-ci.org/display/JENKINS/Perforce+Plugin">Perforce Plugin</a>, and the other (official) one is called <a href="https://wiki.jenkins-ci.org/display/JENKINS/P4+Plugin">P4 Plugin</a>.
+						For this guide, I chose to use the older of the two since it's still being updated regularly and I never had any problems with it, but you can use the official P4 Plugin and ignore this part. Like I said, it's entirely optional.
+						You can install the Perforce Plugin directly from Jenkins by clicking on "Manage Jenkins" and then selecting the "Manage Plugins" option:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-10.png" alt="Create a new Jenkins project"></img>
+					</p>
+					
+					<p>
+						Now, if you switch to the "Available" tab and start typing "perforce" in the filter box, you should see the 2 plugins I mentioned earlier. Select "Perforce Plugin" and click on the "Download now and install after restart" button:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-11.png" alt="Install the Perforce plugin"></img>
+					</p>
+					
+					<p>
+						Jenkins will proceed to install the plugin and, after you check "Restart Jenkins when installation is complete and no jobs are running" (required), you will be able to finally select Perforce as your Source Code Management settings for the project you created earlier.
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-12.png" alt="Install the Perforce plugin"></img>
+					</p>
+					
+					<p>
+						Now, go back to your project, select Perforce and enter the following informations:
+						<ul>
+							<li>The P4PORT of your depot under the format hostname:port</li>
+							<li>Your perforce username</li>
+							<li>Your perforce password</li>
+							<li>Your perforce workspace</li>
+						</ul>
 					</p>
 					
 					<h2 class="section-heading">Automatically build your game</h2>
 
                     <p>
-						Coming soon...
+						This is where we are going to do the bulk of the job and make our automation setup finally come to life.
 					</p>
                 </div>
             </div>
