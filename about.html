@@ -10,11 +10,16 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+	
+	<link href="css/freelancer.css" rel="stylesheet">
+	
 	<link href="css/timeline.css" rel="stylesheet">
-
+	
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
-	<link href="css/github.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,25 +44,18 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index">Patrice Vignola</a>
-				
-				<a style="padding: 10; margin-left: 10px;" href="https://www.linkedin.com/in/patricevignola" class="navbar-brand">
-					<img style=" width: 30px; height: 30px;" src="img/linkedin_logo.png" />
-				</a>
-				
-				<a style="padding: 10; padding-left: 0; margin-left: 10px;" href="mailto:vignola.patrice@gmail.com" class="navbar-brand">
-					<img style=" width: 30px; height: 30px;" src="img/email.png" />
-				</a>
+
+				<a  href="https://www.linkedin.com/in/patricevignola" class="btn-social btn-outline"><i class="fa fa-linkedin"></i></a>
+				<a  href="https://twitter.com/patvignola" class="btn-social btn-outline"><i class="fa fa-twitter"></i></a>
+				<a  href="mailto:vignola.patrice@gmail.com" class="btn-social btn-outline"><i class="fa fa-envelope"></i></a>
             </div>
-			
-			
-			
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 					<li>
                         <a href="projects">Projects</a>
                     </li>
-                    <li>
+					<li>
                         <a href="posts">Posts</a>
                     </li>
                     <li class="active">
@@ -65,9 +63,8 @@
                     </li>
 					<!--
                     <li>
-                        <a href="blog">Blog</a>
-                    </li>
-					-->
+                        <a href="contact">Contact</a>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -131,7 +128,7 @@
 									<h4 class="subheading">Game Jam Battle</h4>
 								</div>
 								<div class="timeline-body">
-									<p class="text-muted">In May 2015, I participated in the first edition of the <strong>Game Jam Battle</strong> 44 hours Game Jam with 4 other developers I didn't know beforehand, and we made the game <strong><a href="#">Zoom</a></strong>. The theme was "<strong>Two steps forward, one step back</strong>".</p>
+									<p class="text-muted">In May 2015, I participated in the first edition of the <strong>Game Jam Battle</strong> 44 hours Game Jam with 4 other developers I didn't know beforehand, and we made the game <strong><a href="project/zoom">Zoom</a></strong>. The theme was "<strong>Two steps forward, one step back</strong>".</p>
 								</div>
 							</div>
                         </li>
@@ -146,7 +143,7 @@
                                     <h4 class="subheading">Pixel Challenge Quebec</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">In March 2015, 4 other developers and I went to the <strong>Pixel Challenge 2015</strong> 48 hours Game Jam in order to compete in the Amateur/Student competition, where we got second place with the game <strong><a href="#">À Bout de Souffle</a></strong>. The theme was "<strong>L'alliance des forces</strong>".</p>
+                                    <p class="text-muted">In March 2015, 4 other developers and I went to the <strong>Pixel Challenge 2015</strong> 48 hours Game Jam in order to compete in the Amateur/Student competition, where we got second place with the game <strong><a href="project/a-bout-de-souffle">À Bout de Souffle</a></strong>. The theme was "<strong>L'alliance des forces</strong>".</p>
                                 </div>
                             </div>
                         </li>
@@ -178,20 +175,49 @@
         </div>
         <!-- /.row -->
 
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright © Patrice Vignola 2015</p>
-                </div>
-            </div>
-        </footer>
-
     </div>
     <!-- /.container -->
-
+	
+	<footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>Montreal, Canada</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Contact Me</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://twitter.com/patvignola" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/patricevignola" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="mailto:vignola.patrice@gmail.com" class="btn-social btn-outline"><i class="fa fa-fw fa-envelope"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Me</h3>
+                        <p>Patrice is a Software Engineering student at ÉTS (École de Technologie Supérieure), located in Montreal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                       Copyright © Patrice Vignola 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+	
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
