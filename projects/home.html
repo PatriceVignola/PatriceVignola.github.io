@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Home: Boov Pop! is a game that Patrice Vignola worked on">
+    <meta name="description" content="Home: Boov Pop! is a game made by Behaviour Interactive">
     <meta name="author" content="Patrice Vignola">
 
     <title>Patrice Vignola - Home: Boov Pop!</title>
@@ -11,10 +11,12 @@
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
+	<link href="../css/freelancer.css" rel="stylesheet">
+	
     <!-- Custom CSS -->
     <link href="../css/style.css" rel="stylesheet">
-
-	<link href="../css/github.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	
 	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,11 +26,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<style type="text/css"></style></head>
-
 <body>
 
-    <!-- Navigation -->
+     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,33 +39,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../index">Patrice Vignola</a>
-				
-				<a style="padding: 10; margin-left: 10px;" href="https://www.linkedin.com/in/patricevignola" class="navbar-brand">
-					<img style=" width: 30px; height: 30px;" src="../img/linkedin_logo.png" />
-				</a>
-				
-				<a style="padding: 10; padding-left: 0; margin-left: 10px;" href="mailto:vignola.patrice@gmail.com" class="navbar-brand">
-					<img style=" width: 30px; height: 30px;" src="../img/email.png" />
-				</a>
+                <a class="navbar-brand" href="index">Patrice Vignola</a>
+
+				<a  href="https://www.linkedin.com/in/patricevignola" class="btn-social btn-outline"><i class="fa fa-linkedin"></i></a>
+				<a  href="https://twitter.com/patvignola" class="btn-social btn-outline"><i class="fa fa-twitter"></i></a>
+				<a  href="mailto:vignola.patrice@gmail.com" class="btn-social btn-outline"><i class="fa fa-envelope"></i></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 					<li>
-                        <a href="../index">Portfolio</a>
+                        <a href="index">Projects</a>
+                    </li>
+					<li>
+                        <a href="posts">Posts</a>
                     </li>
                     <li>
-                        <a href="../about">About</a>
+                        <a href="about">About</a>
                     </li>
+					<!--
                     <li>
-                        <a href="../contact">Contact</a>
-                    </li>
-					<!-- TODO: Uncomment when I actually have something interesting here (game jams postmortems maybe?)
-                    <li>
-                        <a href="blog">Blog</a>
-                    </li>
-					-->
+                        <a href="contact">Contact</a>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -76,53 +71,35 @@
     <!-- Page Content -->
     <div class="container main-content">
 
-        <!-- Page Heading/Breadcrumbs -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Home: Boov Pop!</h1>
-            </div>
-        </div>
+		<!-- Page Header -->
+        <div class="row" style="margin-top: 30px;">
+			<div class="col-lg-12 text-center">
+				<h1>Home: Boov Pop!</h1>
+				<hr class="star-primary">
+			</div>
+		</div>
         <!-- /.row -->
-
+		
 		<!-- Welcome -->
-        <div class="row">
+        <div class="row" style="margin-top: 30px;">
             <div class="col-lg-9">
                 <img class="img-responsive" src="../img/home-banner.jpg" alt="">
             </div>
 			<div class="col-lg-3">
-				<div class="button-container">
-					<a href="https://play.google.com/store/apps/details?id=com.bhvr.homejam" class="button android-button">
-						<div>
-							<p><small>Download on</small></p>
-							<p>Google Play</p>
-						</div>
-					</a>
-				</div>
+				<a href="https://play.google.com/store/apps/details?id=com.bhvr.homejam">
+					<img alt="Get it on Google Play" src="../img/google-play-badge.png" class="download-link" />
+				</a>
 				
-				<div class="button-container">
-					<a href="https://itunes.apple.com/ca/app/home-boov-pop!/id901517123" class="button ios-button">
-						<div>
-							<p><small>Download on the</small></p>
-							<p>App Store</p>
-						</div>
-					</a>
-				</div>
-				
-				<div class="button-container">
-					<a href="http://www.amazon.com/Behaviour-Interactive-Inc-HOME-Boov/dp/B00UGAG49K" class="button amazon-button">
-						<div>
-							<p><small>Download on</small></p>
-							<p>Amazon</p>
-						</div>
-					</a>
-				</div>
+				<a href="https://itunes.apple.com/app/home-boov-pop!/id901517123">
+					<img alt="Download on the App Store" src="../img/app-store-badge.png" class="download-link" />
+				</a>
 			</div>
         </div>
         <!-- /.row -->
 		
 		<div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">The Game</h2>
+                <h3 class="page-header">The Game</h3>
             </div>
         </div>
 		
@@ -152,7 +129,7 @@
 		
 		<div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">What I Worked On</h2>
+                <h3 class="page-header">What I Worked On</h3>
             </div>
         </div>
 		
@@ -193,19 +170,50 @@
         <!-- /.row -->
 
         <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright © Patrice Vignola 2015</p>
-                </div>
-            </div>
-        </footer>
-
     </div>
     <!-- /.container -->
 
+	<!-- Footer -->
+        <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>Montreal, Canada</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Contact Me</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://twitter.com/patvignola" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/patricevignola" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="mailto:vignola.patrice@gmail.com" class="btn-social btn-outline"><i class="fa fa-fw fa-envelope"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Me</h3>
+                        <p>Patrice is a Software Engineering student at ÉTS (École de Technologie Supérieure), located in Montreal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                       Copyright © Patrice Vignola 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+	
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
 

@@ -1,0 +1,210 @@
+<html lang="en"><head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Game Development Portfolio of Patrice Vignola">
+    <meta name="author" content="Patrice Vignola">
+
+    <title>Patrice Vignola - Build Automation With Unreal Engine And Jenkins-CI</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+	<link href="../css/freelancer.css" rel="stylesheet">
+	
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	
+	<link href="../css/clean-blog.min.css" rel="stylesheet">
+	<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/blog-font-1.css" rel="stylesheet" type="text/css">
+	<link href="../css/blog-font-2.css" rel="stylesheet" type="text/css">
+	
+	 <!-- Custom CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<style type="text/css"></style></head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index">Patrice Vignola</a>
+
+				<a  href="https://www.linkedin.com/in/patricevignola" class="btn-social btn-outline"><i class="fa fa-linkedin"></i></a>
+				<a  href="https://twitter.com/patvignola" class="btn-social btn-outline"><i class="fa fa-twitter"></i></a>
+				<a  href="mailto:vignola.patrice@gmail.com" class="btn-social btn-outline"><i class="fa fa-envelope"></i></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+					<li>
+                        <a href="index">Projects</a>
+                    </li>
+					<li>
+                        <a href="posts">Posts</a>
+                    </li>
+                    <li>
+                        <a href="about">About</a>
+                    </li>
+					<!--
+                    <li>
+                        <a href="contact">Contact</a>
+                    </li>-->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    
+
+    <!-- Post Content -->
+    <article>
+        <div class="container main-content">
+			<br />
+			<br />
+			
+			<div class="col-md-8 col-md-offset-2 text-center">
+            <img class="img-responsive center-block img-rounded" src="../img/jenkins-unreal-logo.png" alt="">
+            <h2 class="post-title">
+				Automation with Unreal Engine and Jenkins-CI
+			</h2>
+            <hr class="star-primary">
+          </div>
+		
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <p>
+						As developers, automation is a very powerful tool to have for many reasons. First and foremost, it ensures that the team almost always has access to the latest build without having to lose their precious time building it.
+						Also, if a developer finds a bug, having a build independant of individual development configurations can tell us if the bug is in the depot or only on his machine. Finally, you can successively build for multiple configurations (x64, x86, Development, Shipping) and send them to the appropriate people.
+					</p>
+
+                    <p>
+						This is why I absolutely wanted to have automation before even starting to work on <a href="../projects/astral-tides">Astral Tides</a>. Even though I had never tried to make Jenkins work with Unreal Engine before, I knew it would save us a lot of time and problems down the road.
+					</p>
+
+                    <p>
+						Since I didn't find a whole lot of guides combining Jenkins and Unreal on the web, I thought I would make one myself and let my fellow developers avoid the mistakes I made. The few guides I found were not bad by any means, but I felt like they were skipping over some basic stuff in favor of more advanced automation setups. They were also not explaining how to automatically compile de C++ code from Jenkins, which quickly becomes a problem as soon as you have more than one programmer working on the project.
+					</p>
+					
+					<p>
+						This guide will therefore cover the following topics:
+						<ul>
+							<li>Setupping Jenkins</li>
+							<li>Linking Jenkins with Perforce (optional)</li>
+							<li>Automatically build your game using Unreal's automation tools</li>
+						</ul>
+					</p>
+					
+                    <h2 class="section-heading">Setupping Jenkins</h2>
+
+                    <p>
+						Setupping Jenkins is really easy: all you need is a server you can install the service on. Even though Jenkins runs really well on Linux, in our case we absolutely need a Windows server since it's not possible to build an Unreal Engine game for Windows using anything else.
+						So, once you have downloaded and installed the Windows Installer Package available <a href="https://jenkins.io/content/thank-you-downloading-windows-installer/">over here</a>, you will end up againt a nice welcome page if you type <a href="http://localhost:8080/">localhost:8080</a> in your favorite browser:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-1.png" alt="Welcome page"></img>
+					</p>
+
+					<p>
+						If you don't see that screen, it probably means that the service didn't start automatically. You can fix this by opening your task manager, going to the "Services" tab and making sure that the status is "Running":
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-2.png" alt="The service is running"></img>
+					</p>
+					
+					<p>
+						Now, if you try to access your server directly from its IP address, you might see a "This site can't be reached" error. This is probably due to the 8080 port not being forwarded correctly. To fix this, you can google "How to forward a port" and the steps should be pretty straightforward, depending on your configuration.
+					</p>
+					
+                    <h2 class="section-heading">Linking Jenkins with perforce</h2>
+
+                    <p>
+						Coming soon...
+					</p>
+					
+					<h2 class="section-heading">Automatically build your game</h2>
+
+                    <p>
+						Coming soon...
+					</p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+        <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>Montreal, Canada</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Contact Me</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://twitter.com/patvignola" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/patricevignola" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="mailto:vignola.patrice@gmail.com" class="btn-social btn-outline"><i class="fa fa-fw fa-envelope"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Me</h3>
+                        <p>Patrice is a Software Engineering student at ÉTS (École de Technologie Supérieure), located in Montreal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                       Copyright © Patrice Vignola 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+	
+	<!-- Clean Blog JavaScript -->
+    <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
