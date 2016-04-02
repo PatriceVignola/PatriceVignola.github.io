@@ -99,7 +99,7 @@
 					</p>
 
                     <p>
-						This is why I absolutely wanted to have automation before even starting to work on <a href="../projects/astral-tides">Astral Tides</a>. Even though I had never tried to make Jenkins work with Unreal Engine before, I knew it would save us a lot of time and problems down the road.
+						This is why I absolutely wanted to have automation before even starting to work on <a href="../project/astral-tides">Astral Tides</a>. Even though I had never tried to make Jenkins work with Unreal Engine before, I knew it would save us a lot of time and problems down the road.
 					</p>
 
                     <p>
@@ -109,14 +109,15 @@
 					<p>
 						This guide will therefore cover the following topics:
 						<ul>
-							<li>Setup Jenkins</li>
-							<li>Create a new Jenkins project</li>
-							<li>Link Jenkins with Perforce</li>
-							<li>Automatically Build Your Game</li>
+							<li><a href="#setup-jenkins">Setup Jenkins</a></li>
+							<li><a href="#create-new-jenkins-project">Create a new Jenkins project</a></li>
+							<li><a href="#link-jenkins-with-perforce">Link Jenkins with Perforce (optional)</a></li>
+							<li><a href="#automatically-build-your-game">Automatically Build Your Game</a></li>
+							<li><a href="#parameterize-your-build">Parameterize your build (optional)</a></li>
 						</ul>
 					</p>
-					
-                    <h2 class="section-heading">Setup Jenkins</h2>
+
+                    <h2 class="section-heading" id="setup-jenkins">Setup Jenkins</h2>
 
                     <p>
 						Setupping Jenkins is really easy: all you need is a server you can install the service on. Even though Jenkins runs really well on Linux, in our case we absolutely need a Windows server since it's not possible to build an Unreal Engine game for Windows using anything else.
@@ -139,7 +140,7 @@
 						Now, if you try to access your server directly from its IP address, you might see a "This site can't be reached" error. This is probably due to the 8080 port not being forwarded correctly. You can google "How to forward a port" and the steps should be pretty straightforward, depending on your configuration.
 					</p>
 					
-					<h2 class="section-heading">Create a new Jenkins project</h2>
+					<h2 class="section-heading" id="create-new-jenkins-project">Create a new Jenkins project</h2>
 
                     <p>
 						First of all, locate the "New Item" option available in the left sidebar menu of the home page of Jenkins. After clicking on it, select "Freestyle project" and enter the name of your project in the "Item name" field:
@@ -161,7 +162,7 @@
 						You might have noticed that Perforce is not there yet. If you want to link Jenkins to Perforce, follow me to the next section. Otherwise, you can configure your own Source Code Management settings and then skip to the last part of this guide, "Automatically Build Your Game". 
 					</p>
 					
-                    <h2 class="section-heading">Link Jenkins with perforce</h2>
+                    <h2 class="section-heading" id="link-jenkins-with-perforce">Link Jenkins with perforce (optional)</h2>
 
                     <p>
 						This part is optional and dependant on your source control system. If you are using Subversion or CVS, you can simply ignore this part.
@@ -196,17 +197,146 @@
 					<p>
 						Now, go back to your project, select Perforce and enter the following informations:
 						<ul>
-							<li>The P4PORT of your depot under the format hostname:port</li>
+							<li>The P4PORT of your depot under the format hostname:port (usually hostname:1666)</li>
 							<li>Your perforce username</li>
 							<li>Your perforce password</li>
 							<li>Your perforce workspace</li>
+							<li>The View Map of your depot</li>
 						</ul>
 					</p>
 					
-					<h2 class="section-heading">Automatically build your game</h2>
+					<p>
+						Most of this infos is straightforward (and I can't help you with it), but if you don't know what to enter for the View Map, just type in your depot under the format <strong>//depot name/...</strong> And if you have no idea what your depot is, you can open the Perforce client and look over here (it's the root):
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-13.png" alt="Perforce depot name"></img>
+					</p>
+					
+					<p>
+						If you entered all the information correctly and your depot is now empty, you should be able to hit the "Build" button in the project's left sidebar and see something that looks like this in the Console Output:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-14.png" alt="Perforce depot name"></img>
+					</p>
+					
+					<p>
+						Congratulations, your Perforce setup is now over. It wasn't too hard, but people sometimes struggle with one or two things because they are not sure which plugin to download. Now, the rest of the guide won't need to know if you use Perforce or not.
+					</p>
+					
+					<h2 class="section-heading" id="automatically-build-your-game">Automatically build your game</h2>
 
                     <p>
-						This is where we are going to do the bulk of the job and make our automation setup finally come to life.
+						This is where we are going to do the bulk of the job and make our automation setup finally come to life. The first thing you need to specify is how often you want Jenkins to build a new version of your game, under the section <strong>Build Triggers</strong>. Usually, the popular option here is "Poll SCM", which means that jenkins will scan your depot every X seconds, minutes or hours and build only if it sees changes. You rarely want to build periodically since it will trigger a lot of useless builds, especially for smaller teams that don't submit a lot of changelists. For the schedule, even though Jenkins explains it well enough if you click on the question mark, it might still be confusing. In my own setup, to poll my SCM every 5 minutes, I used <strong>H/5 * * * *</strong>:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-15.png" alt="Perforce depot name"></img>
+					</p>
+					
+					<p>
+						Now, the section called <strong>Build</strong> is where the real magic happens. This section is located near the bottom of the page, and this is where you will put all your batch commands. <strong>Note: You can also put Shell, Maven or Ant commands, but since we have to use a Windows OS in order to make Windows builds with Unreal, we have to use batch commands.</strong>
+					</p>
+					
+					<p>
+						There are a lot of command setups you can use to build automatically with Unreal Engine, but since the purpose of this guide is to offer a straightforward and A to Z guide for beginners, I will offer my solution. I will therefore put every single command I use, <strong>in order</strong>, and explain its purpose right below.
+					</p>
+					
+					<p>
+						<blockquote class="code">
+							rd /s /q temp
+						</blockquote>
+						<ul><li>
+							The purpose of this command is simply to make sure that we have a clean folder to work with every time. This is important to put it at the very beginning since builds may sometimes fail in the middle or be canceled, so we would find ourselves with an existing temporary folder for subsequent builds (and we don't want that). It will be explained later on what to put in this folder.
+						</li></ul>
+					</p>
+
+					<p>
+						<blockquote class="code">
+							"absolute/path/to/unreal/Engine/Binaries/DotNet/UnrealBuildTool.exe" -projectfiles -project="%WORKSPACE%/ProjectName/ProjectName.uproject" -game -rocket -progress
+						</blockquote>
+						<ul><li>
+							The absolute path to unreal should look like <strong>C:/Program Files/Epic Games/4.10</strong> and the <strong>%WORKSPACE%</strong> variable will nicely translate the absolute path of your Jenkins project's workspace for you. This command uses the Unreal Build Tool in order to generate the project files and is the equivalent of right-clicking on the .uproject file and selecting <strong>Generate Visual Studio project files</strong>. I didn't find any official documentation on this, but I found it was a necessary step to make sure that the .sln exists and to make sure that all the prerequisites are up to date.
+						</li></ul>
+					</p>
+					
+					<p>
+						<blockquote class="code">
+							"absolute/path/to/MSBuild/14.0/Bin/MSBuild.exe" "ProjectName\ProjectName.sln" /t:build /p:Configuration="Development Editor";Platform=Win64;verbosity=diagnostic
+						</blockquote>
+						<ul><li>
+							The absolute path to MSBuild should look like <strong>C:/Program Files (x86)/MSBuild</strong> and the <strong>14.0</strong> folder is entirely dependant on the version of Visual Studio you have; pick the folder available for you.
+							This command will make sure that the dll (so basically the compiled game) is always up to date. Again, I didn't find any documentation related to this and found the command by trial and error, but I found it to be a crucial step in order to successfully build the game. The reasoning behind it is that, since the game's .dll is not something you should ever version control when working with multiple programmers, something independant needs to build it on its own and this is the best way I found. The build will still work if you omit this command, but it might not be up to date.
+						</li></ul>
+					</p>
+					
+					<p>
+						<blockquote class="code">
+							"absolute/path/to/unreal/Engine/Build/BatchFiles/RunUAT.bat" BuildCookRun -rocket -nocompile -nocompileeditor -installed -nop4 -project="absolute/path/to/jenkins/workspace/ProjectName/ProjectName.uproject" -cook -stage -archive -archivedirectory="absolute/path/to/jenkins/workspace/ProjectName/temp/Development/x64" -package -clientconfig=Development -ue4exe=UE4Editor-Cmd.exe -clean -pak -prereqs -distribution -nodebuginfo -targetplatform=Win64 -build -utf8output
+						</blockquote>
+						<ul><li>
+							This is where most of the job is done. I am not going to explain every parameters in detail, but this command will essentially build the game by using the .dll we compiled earlier and all the assets and blueprints in your project in order to make an executable. If you want faster builds, you can remove the <strong>-clean</strong> parameter, but this is unsafe and you might still need to do a clean build regularly to make sure that you don't have leftovers. You can also change the target platform to target x86 instead (Win32).
+						</li></ul>
+					</p>
+					
+					<p>
+						<blockquote class="code">
+							ren temp\Development\x64\WindowsNoEditor %P4_CHANGELIST%_ProjectName_Development_x64
+						</blockquote>
+						<ul><li>
+							This step is completely optional, but it's nice to have and makes things easier to work with. What Unreal does is putting your game in a <strong>WindowsNoEditor</strong>, so what we do here is simply rename that folder to a name that is directly linked to the revision of the SCM. I used <strong>%P4_CHANGELIST%</strong> because I'm working with Perforce, but it works for other SCM too. For Subversion, you can use <strong>%SVN_REVISION%</strong> instead.
+						</li></ul>
+					</p>
+					
+					<p>
+						<blockquote class="code">
+							"absolute/path/to/7zip/7z.exe" a -t7z builds/Development/%P4_CHANGELIST%_ProjectName/%P4_CHANGELIST%_ProjectName_Development_x64.rar "%WORKSPACE%/temp/development/x64/%P4_CHANGELIST%_ProjectName_Development_x64"
+						</blockquote>
+						<ul><li>
+							For this command, you can choose the file archiver of your choice; it doesn't really matter. It only needs to be able to archive a folder and produce a .rar or a .zip. <strong>Note: If you are using 7zip, you need to provide the full, absolute path to the build folder (e.g. 114700_ProjectName). Otherwise, it will store all the relative folder hierarchy in the .rar archive and bury the executable 5 or 6 folders deep.</strong>
+						</li></ul>
+					</p>
+					
+					<p>
+						When you are done, this will give you a nice big block of commands:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-16.png" alt="Build commands"></img>
+					</p>
+					
+					<p>
+						Finally, we need to tell Jenkins where to find our <strong>artifact</strong>. An artifact is something that Jenkins considers as the final result of a build and it's what will be made available over the internet for people to download. In our case, it's the .rar archive we did earlier. We tell Jenkins where to find that artifact in the <strong>Post-build Actions</strong> section, right below the <strong>Build</strong> section we just finished with:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-17.png" alt="Artifact location"></img>
+					</p>
+					
+					<p>
+						You will probably have a <strong>doesn't match anything</strong> error like me, and it's perfectly normal. This is because we use variables to set the name of the artifact, and Jenkins is freaking out because it doesn't know that. But don't worry; it will still work. Now, if you start a new build, it will hopefully be successful and Jenkins will give you something like this:
+					</p>
+					
+					<p>
+						<img class="img-responsive" src="../guides/jenkins/jenkins-18.png" alt="Artifact location"></img>
+					</p>
+					
+					<p>
+						Hooray!! We are now essentially done. We can stop here and have a perfectly fine development build that will frequently poll our SCM and start a new build if necessary, or we can do even better. What if, with only one click, we were able to build a <strong>Shipping</strong> version of the game that will be optimized and ready to be sent to the public? This is exactly what we are going to do in the next section. Let's go!
+					</p>
+					
+					<h2 class="section-heading" id="parameterize-your-build">Parameterize your build (optional)</h2>
+
+                    <p>
+						Coming soon...
+					</p>
+					
+					<h2 class="section-heading">Conclusion</h2>
+
+                    <p>
+						This guide ended up being longer than I initially thought, but I hope it helped some developers who wanted to try automation with Unreal Engine and Jenkins for the first time.
+						Don't hesitate to contact me on twitter <a href="https://twitter.com/patvignola">@patvignola</a> if you have questions or comments to share.
 					</p>
                 </div>
             </div>

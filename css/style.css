@@ -30,6 +30,10 @@ a.btn-social {
 	font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
+blockquote.code {
+	font-style: normal;
+}
+
 footer {
 	padding: 0px;
 }
