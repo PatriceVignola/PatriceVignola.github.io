@@ -23,8 +23,13 @@ a.btn-social {
 	text-decoration: none;
 }
 
+
 img.img-responsive {
 	border-radius: 10px;
+}
+
+img.img-circle {
+	border-radius: 50%;
 }
 
 a:hover {
