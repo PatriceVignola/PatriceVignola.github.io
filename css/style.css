@@ -4,6 +4,8 @@ body {
 	
 	background-color: #1B1D21;
 	color: #999;
+	
+	-webkit-font-smoothing: antialiased;
 }
 
 a:link, a:visited, a:active {
@@ -26,6 +28,10 @@ a.btn-social {
 
 img.img-responsive {
 	border-radius: 10px;
+}
+
+.x1 {
+	width: 50px;
 }
 
 img.img-circle {
@@ -88,11 +94,21 @@ hr {
 	height: 1px;
 }
 
-p {
+p, ul.inline-list {
 	line-height: 1.42;
-	
-	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 20px;
+	/*font-size: 18px;*/
+	font-size: 16px;
+	font-weight: 400;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	letter-spacing: 0.025em;
+}
+
+article p, article li {
+	font-size: 16px;
+}
+
+strong, strong > li {
+	font-weight: 600;
 }
 
 h3, h4, h5, h6 {

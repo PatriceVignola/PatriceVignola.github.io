@@ -117,7 +117,7 @@
 						</ul>
 					</p>
 
-                    <h2 class="section-heading" id="setup-jenkins">Setup Jenkins</h2>
+                    <h3 class="section-heading" id="setup-jenkins">Setup Jenkins</h3>
 
                     <p>
 						Setupping Jenkins is really easy: all you need is a server you can install the service on. Even though Jenkins runs really well on Linux, in our case we absolutely need a Windows server since it's not possible to build an Unreal Engine game for Windows using anything else.
@@ -140,7 +140,7 @@
 						Now, if you try to access your server directly from its IP address, you might see a "This site can't be reached" error. This is probably due to the 8080 port not being forwarded correctly. You can google "How to forward a port" and the steps should be pretty straightforward, depending on your configuration.
 					</p>
 					
-					<h2 class="section-heading" id="create-new-jenkins-project">Create a new Jenkins project</h2>
+					<h3 class="section-heading" id="create-new-jenkins-project">Create a new Jenkins project</h3>
 
                     <p>
 						First of all, locate the "New Item" option available in the left sidebar menu of the home page of Jenkins. After clicking on it, select "Freestyle project" and enter the name of your project in the "Item name" field:
@@ -162,10 +162,10 @@
 						You might have noticed that Perforce is not there yet. If you want to link Jenkins to Perforce, follow me to the next section. Otherwise, you can configure your own Source Code Management settings and then skip to the next part of this guide, <a href="#automatically-build-your-game">Automatically Build Your Game</a>. 
 					</p>
 					
-                    <h2 class="section-heading" id="link-jenkins-with-perforce">Link Jenkins with perforce (optional)</h2>
+                    <h3 class="section-heading" id="link-jenkins-with-perforce">Link Jenkins with perforce (optional)</h3>
 
                     <p>
-						This part is optional and dependant on your source control system. If you are using Subversion or CVS, you can simply ignore this part.
+						This part is optional and only relevant if you are using Perforce. If you plan to use Subversion or CVS, you can skip it entirely.
 					</p>
 					
 					<p>
@@ -225,7 +225,7 @@
 						Congratulations, your Perforce setup is now over. It wasn't too hard, but people sometimes struggle with one or two things because they are not sure which plugin to download. Now, the rest of the guide won't need to know if you use Perforce or not.
 					</p>
 					
-					<h2 class="section-heading" id="automatically-build-your-game">Automatically build your game</h2>
+					<h3 class="section-heading" id="automatically-build-your-game">Automatically build your game</h3>
 
                     <p>
 						This is where we are going to do the bulk of the job and make our automation setup finally come to life. The first thing you need to specify is how often you want Jenkins to build a new version of your game, under the section <strong>Build Triggers</strong>. Usually, the popular option here is "Poll SCM", which means that jenkins will scan your depot every X seconds, minutes or hours and build only if it sees changes. You rarely want to build periodically since it will trigger a lot of useless builds, especially for smaller teams that don't submit a lot of changelists. For the schedule, even though Jenkins explains it well enough if you click on the question mark, it might still be confusing. In my own setup, to poll my SCM every 5 minutes, I used <strong>H/5 * * * *</strong>:
@@ -326,13 +326,13 @@
 						Hooray!! We are now essentially done. We can stop here and have a perfectly fine development build that will frequently poll our SCM and start a new build if necessary, or we can do even better. What if, with only one click, we were able to build a <strong>Shipping</strong> version of the game that will be optimized and ready to be sent to the public? This is exactly what we are going to do in the next section. Let's go!
 					</p>
 					
-					<h2 class="section-heading" id="parameterize-your-build">Parameterize your build (optional)</h2>
+					<h3 class="section-heading" id="parameterize-your-build">Parameterize your build (optional)</h3>
 
                     <p>
 						Coming soon...
 					</p>
 					
-					<h2 class="section-heading">Conclusion</h2>
+					<h3 class="section-heading">Conclusion</h3>
 
                     <p>
 						This guide ended up being longer than I initially thought, but I hope it helped some developers who wanted to try automation with Unreal Engine and Jenkins for the first time.
