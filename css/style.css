@@ -1,11 +1,14 @@
 body {
-	/*background-color: #242121;
-	color: #d1d1d1;*/
-	
 	background-color: #1B1D21;
 	color: #999;
 	
 	-webkit-font-smoothing: antialiased;
+	
+	word-wrap: break-word;
+	
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
 }
 
 a:link, a:visited, a:active {
@@ -94,6 +97,10 @@ hr {
 	height: 1px;
 }
 
+p {
+	margin: 0 0 10px;
+}
+
 p, ul.inline-list {
 	line-height: 1.42;
 	/*font-size: 18px;*/
@@ -101,6 +108,11 @@ p, ul.inline-list {
 	font-weight: 400;
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 	letter-spacing: 0.025em;
+}
+
+footer .list-inline {
+    margin: 0;
+    padding: 0;
 }
 
 article p, article li {
@@ -114,6 +126,9 @@ strong, strong > li {
 h3, h4, h5, h6 {
 	text-transform: capitalize;
 	color: #d1d1d1;
+	
+	font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 700;
 }
 
 h1 {
