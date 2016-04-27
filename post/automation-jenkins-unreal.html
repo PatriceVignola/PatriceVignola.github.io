@@ -244,27 +244,29 @@
 					</p>
 					
 					<p>
+					<!--
 						<blockquote class="code">
 							rd /s /q temp
 						</blockquote>
+						-->
 						<ul><li>
 							The purpose of this command is simply to make sure that we have a clean folder to work with every time. This is important to put it at the very beginning since builds may sometimes fail in the middle or be canceled, so we would find ourselves with an existing temporary folder for subsequent builds (and we don't want that). It will be explained later on what to put in this folder.
 						</li></ul>
 					</p>
 
 					<p>
-						<blockquote class="code">
+						<!--<blockquote class="code">
 							"absolute/path/to/unreal/Engine/Binaries/DotNet/UnrealBuildTool.exe" -projectfiles -project="%WORKSPACE%/ProjectName/ProjectName.uproject" -game -rocket -progress
-						</blockquote>
+						</blockquote>-->
 						<ul><li>
 							The absolute path to unreal should look like <strong>C:/Program Files/Epic Games/4.10</strong> and the <strong>%WORKSPACE%</strong> variable will nicely translate the absolute path of your Jenkins project's workspace for you. This command uses the Unreal Build Tool in order to generate the project files and is the equivalent of right-clicking on the .uproject file and selecting <strong>Generate Visual Studio project files</strong>. I didn't find any official documentation on this, but I found it was a necessary step to make sure that the .sln exists and to make sure that all the prerequisites are up to date.
 						</li></ul>
 					</p>
 					
 					<p>
-						<blockquote class="code">
+						<!--<blockquote class="code">
 							"absolute/path/to/MSBuild/14.0/Bin/MSBuild.exe" "ProjectName\ProjectName.sln" /t:build /p:Configuration="Development Editor";Platform=Win64;verbosity=diagnostic
-						</blockquote>
+						</blockquote>-->
 						<ul><li>
 							The absolute path to MSBuild should look like <strong>C:/Program Files (x86)/MSBuild</strong> and the <strong>14.0</strong> folder is entirely dependant on the version of Visual Studio you have; pick the folder available for you.
 							This command will make sure that the dll (so basically the compiled game) is always up to date. Again, I didn't find any documentation related to this and found the command by trial and error, but I found it to be a crucial step in order to successfully build the game. The reasoning behind it is that, since the game's .dll is not something you should ever version control when working with multiple programmers, something independant needs to build it on its own and this is the best way I found. The build will still work if you omit this command, but it might not be up to date.
@@ -272,27 +274,27 @@
 					</p>
 					
 					<p>
-						<blockquote class="code">
+						<!--<blockquote class="code">
 							"absolute/path/to/unreal/Engine/Build/BatchFiles/RunUAT.bat" BuildCookRun -rocket -nocompile -nocompileeditor -installed -nop4 -project="absolute/path/to/jenkins/workspace/ProjectName/ProjectName.uproject" -cook -stage -archive -archivedirectory="absolute/path/to/jenkins/workspace/ProjectName/temp/Development/x64" -package -clientconfig=Development -ue4exe=UE4Editor-Cmd.exe -clean -pak -prereqs -distribution -nodebuginfo -targetplatform=Win64 -build -utf8output
-						</blockquote>
+						</blockquote>-->
 						<ul><li>
 							This is where most of the job is done. I am not going to explain every parameters in detail, but this command will essentially build the game by using the .dll we compiled earlier and all the assets and blueprints in your project in order to make an executable. If you want faster builds, you can remove the <strong>-clean</strong> parameter, but this is unsafe and you might still need to do a clean build regularly to make sure that you don't have leftovers. You can also change the target platform to target x86 instead (Win32).
 						</li></ul>
 					</p>
 					
 					<p>
-						<blockquote class="code">
+						<!--<blockquote class="code">
 							ren temp\Development\x64\WindowsNoEditor %P4_CHANGELIST%_ProjectName_Development_x64
-						</blockquote>
+						</blockquote>-->
 						<ul><li>
 							This step is completely optional, but it's nice to have and makes things easier to work with. What Unreal does is putting your game in a <strong>WindowsNoEditor</strong>, so what we do here is simply rename that folder to a name that is directly linked to the revision of the SCM. I used <strong>%P4_CHANGELIST%</strong> because I'm working with Perforce, but it works for other SCM too. For Subversion, you can use <strong>%SVN_REVISION%</strong> instead.
 						</li></ul>
 					</p>
 					
 					<p>
-						<blockquote class="code">
+						<!--<blockquote class="code">
 							"absolute/path/to/7zip/7z.exe" a -t7z builds/Development/%P4_CHANGELIST%_ProjectName/%P4_CHANGELIST%_ProjectName_Development_x64.rar "%WORKSPACE%/temp/development/x64/%P4_CHANGELIST%_ProjectName_Development_x64"
-						</blockquote>
+						</blockquote>-->
 						<ul><li>
 							For this command, you can choose the file archiver of your choice; it doesn't really matter. It only needs to be able to archive a folder and produce a .rar or a .zip. <strong>Note: If you are using 7zip, you need to provide the full, absolute path to the build folder (e.g. 114700_ProjectName). Otherwise, it will store all the relative folder hierarchy in the .rar archive and bury the executable 5 or 6 folders deep.</strong>
 						</li></ul>
