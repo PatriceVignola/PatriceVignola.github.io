@@ -331,7 +331,7 @@
 					
 					<p>
 						<blockquote class="code">
-							"&lt;absolute_path_to_unreal_engine_root&gt;/Engine/Build/BatchFiles/RunUAT.bat" BuildCookRun -rocket -compile -compileeditor -installed -nop4 -project="&lt;absolute_path_to_jenkins_root&gt;/workspace/&lt;project_name&gt;/&lt;project_name&gt;.uproject" -cook -stage -archive -archivedirectory="&lt;absolute_path_to_jenkins_root&gt;/workspace/&lt;workspace_name&gt;/temp/Development/x64" -package -clientconfig=Development -ue4exe=UE4Editor-Cmd.exe -clean -pak -prereqs -distribution -nodebuginfo -targetplatform=Win64 -build -utf8output
+							"&lt;absolute_path_to_unreal_engine_root&gt;/Engine/Build/BatchFiles/RunUAT.bat" BuildCookRun -rocket -compile -compileeditor -installed -nop4 -project="%WORKSPACE%/&lt;project_name&gt;/&lt;project_name&gt;.uproject" -cook -stage -archive -archivedirectory="%WORKSPACE%/temp/Development/x64" -package -clientconfig=Development -ue4exe=UE4Editor-Cmd.exe -clean -pak -prereqs -distribution -nodebuginfo -targetplatform=Win64 -build -utf8output
 						</blockquote>
 						<ul><li>
 							This is where most of the job is done. I am not going to explain every parameters in detail, but this command will essentially build the game by using the .dll we compiled earlier and all the assets and blueprints in your project in order to make an executable. If you want faster builds, you can remove the <strong>-clean</strong> parameter, but this is unsafe and you might still need to do a clean build regularly to make sure that you don't have leftovers. You can also change the target platform to target <strong>Win32</strong> instead.
@@ -349,7 +349,7 @@
 					
 					<p>
 						<blockquote class="code">
-							"&lt;absolute_path_to_7zip&gt;/7z.exe" a -t7z builds/Development/%P4_CHANGELIST_%&lt;project_name&gt;/%P4_CHANGELIST_%&lt;project_name&gt;.zip "%WORKSPACE%/temp/development/x64/%P4_CHANGELIST%_&lt;project_name&gt;_Development_x64"
+							"&lt;absolute_path_to_7zip&gt;/7z.exe" a -t7z builds/Development/%P4_CHANGELIST_%&lt;project_name&gt;/%P4_CHANGELIST_%&lt;project_name&gt;.rar "%WORKSPACE%/temp/development/x64/%P4_CHANGELIST%_&lt;project_name&gt;_Development_x64"
 						</blockquote>
 						<ul><li>
 							For this command, you can choose the file archiver of your choice; it doesn't really matter. It only needs to be able to archive a folder and produce a .rar or a .zip. <strong>Note: If you are using 7zip, you need to provide the full, absolute path to the build folder (e.g. 114700_&lt;project_name&gt;). Otherwise, it will store all the relative folder hierarchy in the .rar archive and bury the executable 5 or 6 folders deep.</strong>
@@ -365,7 +365,13 @@
 					</p>
 					
 					<p>
-						Finally, we need to tell Jenkins where to find our <strong>artifact</strong>. An artifact is the final result of a build and it's what will be made available over the internet for people to download. In our case, it's the .zip archive we made earlier. We tell Jenkins where to find that artifact in the <strong>Post-build Actions</strong> section, right below the <strong>Build</strong> section we just finished with:
+						Finally, we need to tell Jenkins where to find our <strong>artifact</strong>. An artifact is the final result of a build and it's what will be made available over the internet for people to download. In our case, it's the .rar archive we made earlier. We tell Jenkins where to find that artifact in the <strong>Post-build Actions</strong> section, right below the <strong>Build</strong> section we just finished with:
+					</p>
+					
+					<p>
+						<blockquote class="code">
+							builds\Development\${P4_CHANGELIST}_&lt;project_name&gt;\*.rar
+						</blockquote>
 					</p>
 					
 					<p>
