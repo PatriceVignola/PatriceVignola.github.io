@@ -1,0 +1,213 @@
+<html lang="en"><head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Chronomancer Siege is a game made for the 2017 edition of the Ubisoft Montreal Game Lab Competition">
+    <meta name="author" content="Patrice Vignola">
+
+    <title>Patrice Vignola - Chronomancer Siege</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+	<link href="../css/freelancer.css" rel="stylesheet">
+	
+    <!-- Custom CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	
+	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index">Patrice Vignola</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<a  href="https://www.linkedin.com/in/patricevignola" class="btn-social btn-outline"><i class="fa fa-linkedin"></i></a>
+				<a  href="https://twitter.com/patvignola" class="btn-social btn-outline"><i class="fa fa-twitter"></i></a>
+				<a  href="mailto:vignola.patrice@gmail.com" class="btn-social btn-outline"><i class="fa fa-envelope"></i></a>
+                <ul class="nav navbar-nav navbar-right">
+					<li>
+                        <a href="../projects">Projects</a>
+                    </li>
+					<li>
+                        <a href="../posts">Posts</a>
+                    </li>
+                    <li>
+                        <a href="../about">About</a>
+                    </li>
+					<!--
+                    <li>
+                        <a href="contact">Contact</a>
+                    </li>-->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container main-content">
+        <div class="row" style="margin-top: 30px;">
+	  <div class="col-lg-12 text-center">
+	    <h1>Chronomancer Siege</h1>
+	    <hr class="star-primary">
+	  </div>
+	</div>
+
+        <div class="row" style="margin-top: 30px;">
+          <div class="col-lg-9">
+	    <img class="img-responsive" src="../img/chronomancer-siege-banner.jpg" alt="Chronomancer Siege">
+          </div>
+
+          <div class="col-lg-3">
+            <a href="https://github.com/PatriceVignola/Builds/releases/download/windows/chronomancer-siege.zip">
+	      <img alt="Download for Windows" src="../img/windows-badge.png" class="download-link" />
+            </a>
+          </div>
+        </div>
+
+	<div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header">The Game</h3>
+          </div>
+        </div>
+		
+        <div class="row">
+          <div class="col-lg-6">
+	    <div class="video-container">
+	      <iframe width="1000" height="561.8" src="https://www.youtube.com/embed/AFGh_mkoSgw" frameborder="0" allowfullscreen></iframe>
+	    </div>
+	  </div>
+			
+	  <div class="col-lg-6">
+	    <p>
+	      Chronomancer Siege is a game I made in less than 10 weeks for the Ubisoft Game Lab Competition 2017.
+	      It's an online cooperative brawler with a touch of puzzles, in which you must play with time to defeat your enemies.
+	    </p>
+
+	    <p>
+	      The players can record/rewind at any time during a fight and there's always a lot going on.
+	      Therefore, one of the biggest technical challenges of this game was to perfectly rewind the state of all actors while, at the same time, minimizing the network lag and making it look smooth for the player.
+	    </p>
+
+	    <p>
+	      Overall, I think we did a good job: the skeleton bones rewind smoothly and accurately every frame, there is no noticeable lag over the network and the game state is never broken.
+	    </p>
+          </div>
+        </div>
+		
+	<div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header">What I Worked On</h3>
+          </div>
+        </div>
+		
+        <div class="row">
+          <div class="col-md-12">
+	    <p>
+	      <strong>Tools used:</strong>
+	    </p>
+
+	    <ul class="inline-list">
+	      <li>Unreal Engine 4</li>
+	      <li>Visual Studio (C++)</li>
+	    </ul>
+				
+	    <br />
+				
+	    <p>
+	      <strong>Features I implemented:</strong>
+
+	        <ul class="inline-list">
+		  <li>States Recording and Rewinding</li>
+		  <li>Bones Recording and Rewinding</li>
+		  <li>Network Replication and Optimization</li>
+		  <li>Game Loop</li>
+		  <li>Checkpoints System</li>
+		  <li>Enemy Waves System</li>
+		  <li>Pillar Puzzles System</li>
+		  <li>Death Rewind and Respawn</li>
+		  <li>Wwise Events Integration</li>
+		</ul>
+	    <p>
+          </div>
+        </div>
+
+        <hr>
+
+    </div>
+    <!-- /.container -->
+
+		<!-- Footer -->
+        <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>Montreal, Canada</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Contact Me</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://twitter.com/patvignola" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/patricevignola" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="mailto:vignola.patrice@gmail.com" class="btn-social btn-outline"><i class="fa fa-fw fa-envelope"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Me</h3>
+                        <p>Patrice is a Software Engineering student at ÉTS (École de Technologie Supérieure), located in Montreal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                       Copyright © Patrice Vignola 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+	
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+
+
+
+</body></html>
