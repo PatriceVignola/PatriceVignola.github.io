@@ -11,6 +11,10 @@ body {
     line-height: 1.42857143;
 }
 
+.profile-picture {
+	margin-bottom: 10px;
+}
+
 a:link, a:visited, a:active {
     color: #d1d1d1;
 	text-decoration: none;
